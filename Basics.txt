@@ -1,0 +1,72 @@
+Basic GitBash Commands:
+
+========================================================================================================================
+cd
+	-cd into home directory
+
+cd ~
+	-cd to previous location
+
+cd ..
+	-cd up one directory level
+
+mkdir <Folder Name>
+	-makes a folder in current directory
+
+mkdir /<path>/<Folder Name>
+	-makes a folder at that path
+
+echo "Text to replace all existing text" > file.txt
+	-replaces text in file.txt with stuff in quotes
+
+echo "Text to be appended" >> file.txt
+	-appends stuff in quotes
+
+rm <File Name>
+	-removes this file in current directory
+
+rm -rf <Folder Name>
+	-removes folder and all of its contents
+
+================================================================
+git clone <url>
+	-clones repo to my computer
+	-be in directory I want repo to be in
+	-PASTE SHORTCUT: Shift + Insert
+
+***Commands only work in the same directory where repo is***
+
+git status
+	-keeps you up to date on all changes
+
+git add <file name>
+	-inserts file
+
+git add .
+	-adds all changes except file deletions
+
+git add -A
+	-adds all changes
+
+git add -p
+	-adds all changes and walks through them except new file insertions
+
+git commit -m "<message>"
+	-commits all new changes to your computer
+	-shows message
+	-if you forget the message and see a scary screen: 
+		-type in your multi-line message
+		-Esc + wq
+
+git push
+	-syncs GitHub with your commits
+
+git pull
+	-syncs your computer with GitHub
+
+================================================================
+manual merging after git pull:
+	-top line is what you have
+	-fix stuff
+	-git add -A
+	-git commit (without message) 
