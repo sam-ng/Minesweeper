@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Minesweeper {
+  public static createEasyGrid() {
+    int[][] grid = new int[10][10];
+  }
+  public static createMediumGrid
+    
+  public static void main(String[] args) {
+    Scanner ms = new Scanner(System.in);
+    System.out.println("Enter the difficulty level: Easy, Medium, Hard, Impossible, or Custom.");
+    String diff = ms.nextLine();
+    if (diff.equals("Easy"))
+      createEasyGrid();
+    else if (diff.equals("Medium"))
+      createMediumGrid();
+    else if (diff.equals("Hard"))
+      createHardGrid();
+    else if (diff.equals("Impossible"))
+      createImpossibleGrid();
+    
