@@ -1,21 +1,26 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class Minesweeper {
   
   public static void createEasyGrid() {
-    int[][] grid = new int[5][5];
+    char[][] grid = new char[5][5];
+    generateMines(10, 5, 5);
   }
   
   public static void createMediumGrid() {
-    int[][] grid = new int[10][10];
+    char[][] grid = new char[10][10];
+    generateMines(20, 10, 10);
   }
   
   public static void createHardGrid() {
-    int[][] grid = new int[15][15];
+    char[][] grid = new char[15][15];
+    generateMines(40, 15, 15);
   }
   
   public static void createImpossibleGrid() {
-    int[][] grid = new int[20][20];
+    char[][] grid = new char[20][20];
+    generateMines(80, 20, 20);
   }
   
   public static void createCustomGrid() {
@@ -24,7 +29,23 @@ public class Minesweeper {
     int r = ms.nextInt();
     System.out.println("Enter the numbers of columns.");
     int c = ms.nextInt();
-    int[][] grid = new int[r][c];
+    System.out.println("Enter the number of mines.");
+    int m = ms.nextInt();
+    char[][] grid = new char[c][r];
+    generateMines(m, r, c);
+  }
+  
+  public static void generateMines(int totalMines, int row, int column) {
+    int mines = 0;
+    Random rand = new Random();
+    while (mines < totalMines) {
+      int mineRow = rand.nextInt(row);
+      int mineColumn = rand.nextInt(column);
+      if (grid[mineColumn][mineRow] != '*') {
+        grid[mineColumn][mineRow] = '*';
+        mines++;
+      }
+    }
   }
     
   public static void main(String[] args) {
