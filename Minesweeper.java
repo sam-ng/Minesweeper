@@ -7,7 +7,7 @@ public class Minesweeper {
     char[][] grid = new char[5][5];
     generateMines(10, 5, 5);
   }
-//grid type is har so element can be denoted with '*' for mine and '#' for flag
+//grid type is char so element can be denoted with '*' for mine and '#' for flag
 //generateMines calls static method for placing mines
   public static void createMediumGrid() {
     char[][] grid = new char[10][10];
