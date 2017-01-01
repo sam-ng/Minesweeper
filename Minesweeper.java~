@@ -7,7 +7,8 @@ public class Minesweeper {
     char[][] grid = new char[5][5];
     generateMines(10, 5, 5);
   }
-  
+//grid type is char so element can be denoted with '*' for mine and '#' for flag
+//generateMines calls static method for placing mines
   public static void createMediumGrid() {
     char[][] grid = new char[10][10];
     generateMines(20, 10, 10);
@@ -39,9 +40,9 @@ public class Minesweeper {
     int mines = 0;
     Random rand = new Random();
     while (mines < totalMines) {
-      int mineRow = rand.nextInt(row);
+      int mineRow = rand.nextInt(row);                   //generates random numbers between 0 inclusive and row exclusive
       int mineColumn = rand.nextInt(column);
-      if (grid[mineColumn][mineRow] != '*') {
+      if (grid[mineColumn][mineRow] != '*') {            //replaces corresponding element in grid with mine as long as there is not a mine already present
         grid[mineColumn][mineRow] = '*';
         mines++;
       }
@@ -52,7 +53,7 @@ public class Minesweeper {
     Scanner ms = new Scanner(System.in);
     System.out.println("Enter the difficulty level: Easy, Medium, Hard, Impossible, or Custom.");
     String diff = ms.nextLine();
-    if (diff.equals("Easy"))
+    if (diff.equals("Easy"))                               //user choice of difficulty
       createEasyGrid();
     else if (diff.equals("Medium"))
       createMediumGrid();

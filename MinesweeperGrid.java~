@@ -1,0 +1,38 @@
+public class MinesweeperGrid {
+  
+  public static void createEasyGrid() {
+    char[][] grid = new char[5][5];
+    generateMines(10, 5, 5);
+  }
+
+  public static void createMediumGrid() {
+    char[][] grid = new char[10][10];
+    generateMines(20, 10, 10);
+  }
+  
+  public static void createHardGrid() {
+    char[][] grid = new char[15][15];
+    generateMines(40, 15, 15);
+  }
+  
+  public static void createImpossibleGrid() {
+    char[][] grid = new char[20][20];
+    generateMines(80, 20, 20);
+  }
+  
+  public static void createCustomGrid() {
+    Scanner ms = new Scanner(System.in);
+    System.out.println("Enter the number of rows.");
+    int r = ms.nextInt();
+    System.out.println("Enter the numbers of columns.");
+    int c = ms.nextInt();
+    System.out.println("Enter the number of mines.");
+    int m = ms.nextInt();
+    char[][] grid = new char[c][r];
+    generateMines(m, r, c);
+  }
+  
+
+  public static void printGrid() {
+    
+    

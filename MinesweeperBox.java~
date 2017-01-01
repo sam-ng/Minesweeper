@@ -1,0 +1,32 @@
+public class MinesweeperBox {
+  
+  private boolean mine;
+  private boolean flag;
+  private boolean question;
+  
+  public MinesweeperBox (boolean m, boolean f, boolean q) {
+    mine = m;
+    flag = f;
+    question = q;
+  }
+  
+  public boolean minePresent() {
+    if (mine)
+      return true;
+    return false;
+  }
+  
+  public boolean flagPresent() {
+    if (flag)
+      return true;
+    return false;
+  }
+  
+  public boolean questionPresent() {
+    if (question)
+      return true;
+    return false;
+  }
+  
+  public String toString() {
+    String box = "--"
