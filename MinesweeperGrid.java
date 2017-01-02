@@ -1,12 +1,12 @@
 public class MinesweeperGrid {
   
-//  private String[][] grid;
+  private String[][] grid;
   private int row;
   private int col;
 //  private String diff;
   
-  public MinesweeperGrid(/*String[][] g,*/int r, int c/*, String d*/) {
-//    grid = g;
+  public MinesweeperGrid(String[][] g, int r, int c/*, String d*/) {
+    grid = g;
     row = r;
     col = c;
 //    diff = d;
@@ -54,7 +54,7 @@ public class MinesweeperGrid {
   }
 */
   public void printGrid() {
-    String[][] grid = new String[row][col];
+    grid = new String[row][col];
     MinesweeperBox box = new MinesweeperBox(false, false, false);
     for (int i = 0; i < grid.length; i++) {
       for (int j = 0; j < grid[0].length; j++) {
