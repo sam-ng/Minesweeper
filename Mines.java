@@ -12,10 +12,8 @@ public class Mines{
   
   
   public int[][] createMines(){
-  for(int i = 0; i<amountMines ; i++){
+    for(int i = 0; i<amountMines ; i++){
     gr[Math.random()*gr.length][Math.random()*gr[0].length] = '*';
-   }
+    }
   }
-                             
-      
-    
+}

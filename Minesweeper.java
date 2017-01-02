@@ -14,25 +14,36 @@ public class Minesweeper {
         mines++;
       }
     }
-  }*/
+  }
+  
+      Scanner ms = new Scanner(System.in);
+    System.out.println("Enter the number of rows.");
+    int r = ms.nextInt();
+    System.out.println("Enter the numbers of columns.");
+    int c = ms.nextInt();
+    System.out.println("Enter the number of mines.");
+    int m = ms.nextInt();
+  */
   
   public static void main(String[] args) {
     Scanner ms = new Scanner(System.in);
     System.out.println("Enter the difficulty level: Easy, Medium, Hard, or Custom.");
     String diff = ms.nextLine();
-    if (diff.equals("Easy"))                               //user choice of difficulty
-      createEasyGrid();
+    MinesweeperGrid grid = new MinesweeperGrid(0, 0);
+    if (diff.equals("Easy"))
+      grid.setEasy();
     else if (diff.equals("Medium"))
-      createMediumGrid();
+      grid.setMedium();
     else if (diff.equals("Hard"))
-      createHardGrid();
-    else if (diff.equals("Custom"))
-      createCustomGrid();
+      grid.setHard();
+/*    else if (diff.equals("Custom"))
+      createCustomGrid();*/
     else {
       System.out.println("Error! Invalid difficulty level.");
       System.out.println("Enter the difficulty level: Easy, Medium, Hard, or Custom.");
       diff = ms.nextLine();
     }
+    System.out.println(grid);
     ms.close();
   }
 }

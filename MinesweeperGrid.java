@@ -1,52 +1,56 @@
 public class MinesweeperGrid {
   
-  private String grid;
+//  private String[][] grid;
   private int row;
   private int col;
-  private int diff;
+//  private String diff;
   
-  public MinesweeperGrid(char g) {
-    grid = g;
+  public MinesweeperGrid(/*String[][] g,*/int r, int c/*, String d*/) {
+//    grid = g;
+    row = r;
+    col = c;
+//    diff = d;
   }
   
-  public static char createEasyGrid() {
-    char[][] grid = new char[5][5];
-    return grid;
+/*  public void changeDiff(String d) {
+    diff = d;
+  }*/
+  public void setEasy() {
+    row = 9;
+    col = 9;
+  }
+  
+  public void setMedium() {
+    row = 16;
+    col = 16;
+  }
+  
+  public void setHard() {
+    row = 16;
+    col = 30;
   }
 
-  public static char createMediumGrid() {
-    char[][] grid = new char[10][10];
-    return grid;
-  }
-  
-  public static char createHardGrid() {
-    char[][] grid = new char[15][15];
-    return grid;
-  }
-  
-  public static void createCustomGrid() {
-    Scanner ms = new Scanner(System.in);
-    System.out.println("Enter the number of rows.");
-    int r = ms.nextInt();
-    System.out.println("Enter the numbers of columns.");
-    int c = ms.nextInt();
-    System.out.println("Enter the number of mines.");
-    int m = ms.nextInt();
-    char[][] grid = new char[c][r];
-    return grid;
-  }
-
-  public static void printGrid(char grid) {
+  public String toString() {
+/*    if (diff.equals("Easy")) {
+      row = 9;
+      col = 9;
+    }
+    if (diff.equals("Medium")) {
+      row = 16;
+      col = 16;
+    }
+    if (diff.equals("Hard")) {
+      row = 16;
+      col = 30;
+    }*/
+    String[][] grid = new String[row][col];
+    MinesweeperBox box = new MinesweeperBox(false, false, false);
     for (int i = 0; i < grid.length; i++) {
-      for (int j = 0; i < grid[0].length; i++) {
-        String box = "|" + grid[i][j] + "|";
-        System.out.print(' -- ');
-        System.out.print("\n");
-        System.out.print(box.charAt(0));
-        System.out.print("\n");
-        System.out.print(' -- ');
+      for (int j = 0; j < grid[0].length; j++) {
+        grid[i][j] = "" + box;
       }
     }
+    return "" + grid;
   }
 }
     
