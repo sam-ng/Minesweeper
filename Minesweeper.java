@@ -43,7 +43,8 @@ public class Minesweeper {
       System.out.println("Enter the difficulty level: Easy, Medium, Hard, or Custom.");
       diff = ms.nextLine();
     }
-    System.out.println(grid);
+//    System.out.println(grid);
+    grid.printGrid();
     ms.close();
   }
 }

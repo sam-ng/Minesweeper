@@ -35,15 +35,16 @@ public class MinesweeperBox {
   }
   public String toString() {
     if (mine) {
-      String box = "---\n|*|\n---";
+      return "---" + "\n|*|\n" + "---";
     }
-    if (flag) {
-      String box = "---" + "\n|#|\n" + "---";
+    else if (flag) {
+      return "---" + "\n|#|\n" + "---";
     }
-    if (question) {
-      String box = "---" + "\n|?|\n" + "---";
+    else if (question) {
+      return "---" + "\n|?|\n" + "---";
     }
-    String box = "---" + "\n| |\n" + "---";
-    return box;
+    else {
+      return "---" + "\n| |\n" + "---";
+    }
   }
 }

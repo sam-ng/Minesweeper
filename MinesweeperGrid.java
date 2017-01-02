@@ -29,9 +29,9 @@ public class MinesweeperGrid {
     row = 16;
     col = 30;
   }
-
+/*
   public String toString() {
-/*    if (diff.equals("Easy")) {
+    if (diff.equals("Easy")) {
       row = 9;
       col = 9;
     }
@@ -42,7 +42,7 @@ public class MinesweeperGrid {
     if (diff.equals("Hard")) {
       row = 16;
       col = 30;
-    }*/
+    }
     String[][] grid = new String[row][col];
     MinesweeperBox box = new MinesweeperBox(false, false, false);
     for (int i = 0; i < grid.length; i++) {
@@ -52,5 +52,17 @@ public class MinesweeperGrid {
     }
     return "" + grid;
   }
+*/
+  public void printGrid() {
+    String[][] grid = new String[row][col];
+    MinesweeperBox box = new MinesweeperBox(false, false, false);
+    for (int i = 0; i < grid.length; i++) {
+      for (int j = 0; j < grid[0].length; j++) {
+        grid[i][j] = "" + box;
+        System.out.print(grid[i][j]);
+      }
+      System.out.print("\n");
+    }
+  }    
 }
     
