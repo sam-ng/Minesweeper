@@ -30,6 +30,11 @@ public class Minesweeper {
     System.out.println("Enter the difficulty level: Easy, Medium, Hard, or Custom.");
     String diff = ms.nextLine();
     MinesweeperGrid grid = new MinesweeperGrid(0, 0);
+    while (!(diff.equals("Easy") || diff.equals("Medium") || diff.equals("Hard") || diff.equals("Custom"))) {
+      System.out.println("Error! Invalid difficulty level.");
+      System.out.println("Enter the difficulty level: Easy, Medium, Hard, or Custom.");
+      diff = ms.nextLine();
+    }
     if (diff.equals("Easy"))
       grid.setEasy();
     else if (diff.equals("Medium"))
@@ -38,11 +43,6 @@ public class Minesweeper {
       grid.setHard();
 /*    else if (diff.equals("Custom"))
       createCustomGrid();*/
-    else {
-      System.out.println("Error! Invalid difficulty level.");
-      System.out.println("Enter the difficulty level: Easy, Medium, Hard, or Custom.");
-      diff = ms.nextLine();
-    }
 //    System.out.println(grid);
     grid.printGrid();
     ms.close();

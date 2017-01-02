@@ -61,7 +61,7 @@ public class MinesweeperGrid {
         grid[i][j] = "" + box;
         System.out.print(grid[i][j]);
       }
-      System.out.print("\n");
+      System.out.println();
     }
   }    
 }
