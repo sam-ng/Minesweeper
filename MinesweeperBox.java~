@@ -10,23 +10,41 @@ public class MinesweeperBox {
     question = q;
   }
   
-  public boolean minePresent() {
-    if (mine)
-      return true;
-    return false;
+  public void appearMine() {
+    mine = true;
   }
   
-  public boolean flagPresent() {
-    if (flag)
-      return true;
-    return false;
+  public void appearFlag() {
+    flag = true;
   }
   
-  public boolean questionPresent() {
-    if (question)
-      return true;
-    return false;
+  public void appearQuestion() {
+    question = true;
   }
   
+  public void disappearMine() {
+    mine = false;
+  }
+  
+  public void disappearFlag() {
+    flag = false;
+  }
+  
+  public void disappearQuestion() {
+    question = false;
+  }
   public String toString() {
-    String box = "--"
+    if (mine) {
+      return "[*]";
+    }
+    else if (flag) {
+      return "[F]";
+    }
+    else if (question) {
+      return "[?]";
+    }
+    else {
+      return "[ ]";
+    }
+  }
+}

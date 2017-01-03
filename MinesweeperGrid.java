@@ -29,30 +29,25 @@ public class MinesweeperGrid {
     row = 16;
     col = 30;
   }
-/*
-  public String toString() {
-    if (diff.equals("Easy")) {
-      row = 9;
-      col = 9;
-    }
-    if (diff.equals("Medium")) {
-      row = 16;
-      col = 16;
-    }
-    if (diff.equals("Hard")) {
-      row = 16;
-      col = 30;
-    }
-    String[][] grid = new String[row][col];
+  
+  public int getArea() {
+    return row * col;
+  }
+
+/*  public String toString() {
+    String stringGrid = "";
+    grid = new String[row][col];
     MinesweeperBox box = new MinesweeperBox(false, false, false);
     for (int i = 0; i < grid.length; i++) {
       for (int j = 0; j < grid[0].length; j++) {
         grid[i][j] = "" + box;
+        stringGrid += grid[i][j];
       }
+      stringGrid += "\n";
     }
-    return "" + grid;
-  }
-*/
+    return stringGrid;
+  }*/ //either one works
+
   public void printGrid() {
     grid = new String[row][col];
     MinesweeperBox box = new MinesweeperBox(false, false, false);
