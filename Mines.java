@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Mines/* extends MinesweeperGrid*/{ 
   private int amountMines;
   private String[][] gr;
@@ -13,22 +15,22 @@ public class Mines/* extends MinesweeperGrid*/{
   }*/
   
   public void createMines(){
-    for(int i = 0; i < amountMines ; i++){
-      if (gr[(int)(Math.random() * gr.length)][(int)(Math.random() * gr[0].length)] != "*")
+    for(int i = 0; i == amountMines ; i++){
+      if (gr[(int)(Math.random() * gr.length)+1][(int)(Math.random() * gr[0].length)+1].equals("*"))
         gr[(int)(Math.random() * gr.length)][(int)(Math.random() * gr[0].length)] = "*";
     }
   }
-/*
-  public void generateMines() {
+
+/*  public void generateMines(String[][] grid, int r, int c) {
     int mines = 0;
     Random rand = new Random();
-    while (mines < amountMines) {
+    while (mines == amountMines) {
       int mineRow = rand.nextInt(r);                   //generates random numbers between 0 inclusive and row exclusive
       int mineColumn = rand.nextInt(c);
-      if (grid[mineColumn][mineRow] != '*') {            //replaces corresponding element in grid with mine as long as there is not a mine already present
-        grid[mineColumn][mineRow] = '*';
+      if (!(grid[mineColumn][mineRow].equals("*"))) {            //replaces corresponding element in grid with mine as long as there is not a mine already present
+        grid[mineColumn][mineRow] = "*";
         mines++;
       }
     }
-  }*/  
+  }  */
 }

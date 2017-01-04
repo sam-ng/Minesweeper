@@ -25,22 +25,23 @@ public class Minesweeper {
     }
     if (diff.equals("Easy")) {
       grid.setEasy();
-      Mines mines = new Mines(g, (int)(grid.getArea() * .18));
+//      grid.getRow();
     }
     else if (diff.equals("Medium")) {
       grid.setMedium();
-      Mines mines = new Mines(g, (int)(grid.getArea() * .18));
     }
     else if (diff.equals("Hard")) {
       grid.setHard();
-      Mines mines = new Mines(g, (int)(grid.getArea() * .18));
+
     }
-    
+//    grid.getRow();
+    Mines mines = new Mines(g, (int)(grid.getArea() * .18));
 /*    else if (diff.equals("Custom"))
       createCustomGrid();*/
 //    System.out.println(grid);
 //    mines.determineMines();
     mines.createMines();
+//    mines.generateMines(g, 9, 9);
     grid.printGrid(); //either print works
 //    System.out.print(grid);
     ms.close();

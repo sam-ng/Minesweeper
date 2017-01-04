@@ -30,6 +30,10 @@ public class MinesweeperGrid {
     col = 30;
   }
   
+  public int getRow() {
+    return row;
+  }
+  
   public int getArea() {
     return row * col;
   }
