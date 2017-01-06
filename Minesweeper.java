@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.Random;
+//import java.util.Random;
 
 public class Minesweeper {
 
@@ -16,34 +16,109 @@ public class Minesweeper {
     Scanner ms = new Scanner(System.in);
     System.out.println("Enter the difficulty level: Easy, Medium, Hard, or Custom.");
     String diff = ms.nextLine();
-    String[][] g = new String[0][0];
-    MinesweeperGrid grid = new MinesweeperGrid(g, 0, 0);
+    MinesweeperGrid grid = new MinesweeperGrid(0, 0);
     while (!(diff.equals("Easy") || diff.equals("Medium") || diff.equals("Hard") || diff.equals("Custom"))) {
       System.out.println("Error! Invalid difficulty level.");
       System.out.println("Enter the difficulty level: Easy, Medium, Hard, or Custom.");
       diff = ms.nextLine();
     }
     if (diff.equals("Easy")) {
+      System.out.println("All set! This is a 9x9 grid.");
       grid.setEasy();
 //      grid.getRow();
     }
     else if (diff.equals("Medium")) {
+      System.out.println("All set! This is a 16x16 grid.");
       grid.setMedium();
     }
     else if (diff.equals("Hard")) {
+      System.out.println("All set! This is a 16x30 grid.");
       grid.setHard();
 
     }
 //    grid.getRow();
-    Mines mines = new Mines(g, (int)(grid.getArea() * .18));
+    int amountMines = (int)(grid.getArea() * .18);
+    Mines mines = new Mines(grid.getGrid(), amountMines);
 /*    else if (diff.equals("Custom"))
       createCustomGrid();*/
 //    System.out.println(grid);
 //    mines.determineMines();
-    mines.createMines();
+    boolean[][] mineGrid = mines.createMines();
+    //testing mineGrid (should be hidden from user)
+/*    int mineCount = 0;
+    for (int i = 0; i < mineGrid.length; i++) {
+      for (int j = 0; j < mineGrid[0].length; j++) {
+//        System.out.print(mineGrid[i][j]);
+        if (mineGrid[i][j])
+          mineCount++;
+        }
+//      System.out.println();
+    }
+    System.out.println(mineCount);*/
+    //testing if mines are actually there
+/*    int m = 0;
+    for (int i = 0; i < grid.getGrid().length; i++) {
+      for (int j = 0; j < grid.getGrid()[0].length; j++) {
+        if (grid.getGrid()[i][j].equals("*")) {
+          m++;
+          System.out.println(i);
+          System.out.println(j);
+        }
+      }
+    }*/
 //    mines.generateMines(g, 9, 9);
-    grid.printGrid(); //either print works
+    grid.printGrid(0, 0, 0);
+    System.out.println("There are " + amountMines + " mines.");//either print works    
 //    System.out.print(grid);
+    
+        //prompt for input
+/*    m = 0;
+    for (int i = 0; i < grid.getGrid().length; i++) {
+      for (int j = 0; j < grid.getGrid()[0].length; j++) {
+        if (grid.getGrid()[i][j].equals("*")) {
+          m++;
+          System.out.println(i);
+          System.out.println(j);
+        }
+        else
+          System.out.println("FAILURE");
+      }
+    }*/
+    int cleared = 0;
+    while(cleared != grid.getGrid().length * grid.getGrid()[0].length - amountMines){
+      System.out.println("Please enter a row.");
+      int x = ms.nextInt();
+      while (!(x > -1 && x < grid.getGrid().length)) {
+        System.out.println("Invalid row. Please enter a row.");
+        x = ms.nextInt();
+      }
+      System.out.println("Please enter a column.");
+      int y = ms.nextInt();
+      while (!(y > -1 && y < grid.getGrid()[0].length)) {
+        System.out.println("Invalid column. Please enter a column.");
+        y = ms.nextInt();
+      }
+        
+      System.out.println("Type in 1 to clear, 2 to flag, and 3 to question mark.");
+      int choice = ms.nextInt();
+      while (choice != 1 && choice != 2 && choice != 3) {
+        System.out.println("Invalid choice. Please enter 1 to clear, 2 to flag, and 3 to question mark.");
+        choice = ms.nextInt();
+      }
+      if(choice == 1){
+        /* clear method classname.clear */
+        grid.printGrid(x, y, choice);
+      }
+      if(choice == 2){
+      /*flag classname.flag */
+        grid.printGrid(x, y, choice);
+      }
+      if(choice == 3){
+        //questionmark* classname.questionmark
+        grid.printGrid(x, y, choice);
+      }
+    }
+    
     ms.close();
   }
 }

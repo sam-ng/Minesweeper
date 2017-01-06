@@ -1,4 +1,4 @@
-import java.util.Random;
+//import java.util.Random;
 
 public class Mines/* extends MinesweeperGrid*/{ 
   private int amountMines;
@@ -14,11 +14,18 @@ public class Mines/* extends MinesweeperGrid*/{
     amountMines = (int)(r * c * .18);                      //amountMines is already instantiated to the constructor arg
   }*/
   
-  public void createMines(){
-    for(int i = 0; i == amountMines ; i++){
-      if (gr[(int)(Math.random() * gr.length)+1][(int)(Math.random() * gr[0].length)+1].equals("*"))
-        gr[(int)(Math.random() * gr.length)][(int)(Math.random() * gr[0].length)] = "*";
+  public boolean[][] createMines(){
+    boolean[][] mineGrid = new boolean[gr.length][gr[0].length];
+    int count = 0;
+    while (count < amountMines){
+      int randRow = (int)(Math.random() * mineGrid.length);
+      int randCol = (int)(Math.random() * mineGrid[0].length);
+      if (!(mineGrid[randRow][randCol])) {
+        mineGrid[randRow][randCol] = true;
+        count++;
+      }
     }
+    return mineGrid;
   }
 
 /*  public void generateMines(String[][] grid, int r, int c) {
