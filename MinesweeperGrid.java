@@ -65,21 +65,21 @@ public class MinesweeperGrid {
     return grid;
   }
   
-/*  public void clearCheck(int i, int j){
+  public void clearCheck(int i, int j, int mineAround){
     MinesweeperBox box = new MinesweeperBox(false, false, false, false);
-    if (grid[i][j] == 0){
+    if (mineAround == 0){
       box.appearClear();
       grid[i][j] = "" + box;
-      clearCheck(i-1, j-1);
-      clearCheck(i, j-1);
-      clearCheck(i+1, j-1);
-      clearCheck(i-1, j);
-      clearCheck(i+1, j);
-      clearCheck(i-1, j+1);
-      clearCheck(i, j+1);
-      clearCheck(i+1, j+1);
+      clearCheck(i-1, j-1, mineAround);
+      clearCheck(i, j-1, mineAround);
+      clearCheck(i+1, j-1, mineAround);
+      clearCheck(i-1, j, mineAround);
+      clearCheck(i+1, j, mineAround);
+      clearCheck(i-1, j+1, mineAround);
+      clearCheck(i, j+1, mineAround);
+      clearCheck(i+1, j+1, mineAround);
     }
-  }*/
+  }
 
 /*  public String toString() {
     String stringGrid = "";
@@ -109,7 +109,7 @@ public class MinesweeperGrid {
     if (choice == 1) {
       box.disappearQuestion();
       box.disappearFlag();
-//      grid.clearCheck(x, y);
+      clearCheck(x, y, m);
       if (m > 0)
         grid[x][y] = "[" + m + "]";
       else {
