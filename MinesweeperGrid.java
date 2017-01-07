@@ -64,6 +64,22 @@ public class MinesweeperGrid {
   public String[][] getGrid() {
     return grid;
   }
+  
+  public void clearCheck(int i, int j){
+    MinesweeperBox box = new MinesweeperBox(false, false, false, false);
+    if (grid[i][j] == 0){
+      box.appearClear();
+      grid[i][j] = "" + box;
+      clearCheck(i-1, j-1);
+      clearCheck(i, j-1);
+      clearCheck(i+1, j-1);
+      clearCheck(i-1, j);
+      clearCheck(i+1, j);
+      clearCheck(i-1, j+1);
+      clearCheck(i, j+1);
+      clearCheck(i+1, j+1);
+    }
+  }
 
 /*  public String toString() {
     String stringGrid = "";
@@ -80,7 +96,7 @@ public class MinesweeperGrid {
   }*/ //either one works
 
   public void printGrid(int x, int y, int choice) {
-    MinesweeperBox box = new MinesweeperBox(false, false, false);
+    MinesweeperBox box = new MinesweeperBox(false, false, false, false);
     if (choice == 0) {
       for (int i = 0; i < grid.length; i++) {
         for (int j = 0; j < grid[0].length; j++) {
@@ -90,9 +106,17 @@ public class MinesweeperGrid {
         System.out.println();
       }
     }
-//    if (choice == 1) {
-      
-      
+    if (choice == 1) {
+      box.disappearQuestion();
+      box.disappearFlag();
+      grid.clearCheck(x, y);
+      for (int i = 0; i < grid.length; i++) {
+        for (int j = 0; j < grid[0].length; j++) {
+          System.out.print(grid[i][j]);
+        }
+        System.out.println();
+      }
+    }
     if (choice == 2) {
       box.disappearQuestion();
       box.appearFlag();
@@ -107,6 +131,18 @@ public class MinesweeperGrid {
     if (choice == 3) {
       box.disappearFlag();
       box.appearQuestion();
+      grid[x][y] = "" + box;
+      for (int i = 0; i < grid.length; i++) {
+        for (int j = 0; j < grid[0].length; j++) {      
+          System.out.print(grid[i][j]);
+        }
+        System.out.println();
+      }
+    }
+    if (choice == 4) {                     //number of death, the choice in which the user loses
+      box.disappearFlag();
+      box.disappearQuestion();
+      box.appearMine();
       grid[x][y] = "" + box;
       for (int i = 0; i < grid.length; i++) {
         for (int j = 0; j < grid[0].length; j++) {      

@@ -45,16 +45,16 @@ public class Minesweeper {
 //    mines.determineMines();
     boolean[][] mineGrid = mines.createMines();
     //testing mineGrid (should be hidden from user)
-/*    int mineCount = 0;
+    int mineCount = 0;
     for (int i = 0; i < mineGrid.length; i++) {
       for (int j = 0; j < mineGrid[0].length; j++) {
-//        System.out.print(mineGrid[i][j]);
+        System.out.print(mineGrid[i][j]);
         if (mineGrid[i][j])
           mineCount++;
         }
-//      System.out.println();
+      System.out.println();
     }
-    System.out.println(mineCount);*/
+    System.out.println(mineCount);
     //testing if mines are actually there
 /*    int m = 0;
     for (int i = 0; i < grid.getGrid().length; i++) {
@@ -66,24 +66,11 @@ public class Minesweeper {
         }
       }
     }*/
-//    mines.generateMines(g, 9, 9);
     grid.printGrid(0, 0, 0);
-    System.out.println("There are " + amountMines + " mines.");//either print works    
-//    System.out.print(grid);
+    System.out.println("There are " + amountMines + " mines.");
     
         //prompt for input
-/*    m = 0;
-    for (int i = 0; i < grid.getGrid().length; i++) {
-      for (int j = 0; j < grid.getGrid()[0].length; j++) {
-        if (grid.getGrid()[i][j].equals("*")) {
-          m++;
-          System.out.println(i);
-          System.out.println(j);
-        }
-        else
-          System.out.println("FAILURE");
-      }
-    }*/
+
     int cleared = 0;
     while(cleared != grid.getGrid().length * grid.getGrid()[0].length - amountMines){
       System.out.println("Please enter a row.");
@@ -105,15 +92,22 @@ public class Minesweeper {
         System.out.println("Invalid choice. Please enter 1 to clear, 2 to flag, and 3 to question mark.");
         choice = ms.nextInt();
       }
-      if(choice == 1){
+      if (choice == 1){
         /* clear method classname.clear */
-        grid.printGrid(x, y, choice);
+        if (mineGrid[x][y]) {
+          grid.printGrid(x, y, 4);
+          System.out.println("OOPS! You tripped a mine. You lose.");
+          System.exit(0);
+        }
+        else {
+          grid.printGrid(x, y, choice);
+        }
       }
-      if(choice == 2){
+      if (choice == 2){
       /*flag classname.flag */
         grid.printGrid(x, y, choice);
       }
-      if(choice == 3){
+      if (choice == 3){
         //questionmark* classname.questionmark
         grid.printGrid(x, y, choice);
       }

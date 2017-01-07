@@ -3,11 +3,13 @@ public class MinesweeperBox {
   private boolean mine;
   private boolean flag;
   private boolean question;
+  private boolean clear;
   
-  public MinesweeperBox (boolean m, boolean f, boolean q) {
+  public MinesweeperBox (boolean m, boolean f, boolean q, boolean c) {
     mine = m;
     flag = f;
     question = q;
+    clear = c;
   }
   
   public void appearMine() {
@@ -22,6 +24,10 @@ public class MinesweeperBox {
     question = true;
   }
   
+  public void appearClear() {
+    clear = true;
+  }
+  
   public void disappearMine() {
     mine = false;
   }
@@ -33,6 +39,11 @@ public class MinesweeperBox {
   public void disappearQuestion() {
     question = false;
   }
+  
+  public void disappearClear() {
+    clear = false;
+  }
+  
   public String toString() {
     if (mine) {
       return "[*]";
@@ -42,6 +53,9 @@ public class MinesweeperBox {
     }
     else if (question) {
       return "[?]";
+    }
+    else if (clear) {
+      return ".";
     }
     else {
       return "[ ]";
