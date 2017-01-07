@@ -44,8 +44,9 @@ public class Minesweeper {
 //    System.out.println(grid);
 //    mines.determineMines();
     boolean[][] mineGrid = mines.createMines();
+
     //testing mineGrid (should be hidden from user)
-    int mineCount = 0;
+/*    int mineCount = 0;
     for (int i = 0; i < mineGrid.length; i++) {
       for (int j = 0; j < mineGrid[0].length; j++) {
         System.out.print(mineGrid[i][j]);
@@ -54,7 +55,7 @@ public class Minesweeper {
         }
       System.out.println();
     }
-    System.out.println(mineCount);
+    System.out.println(mineCount);*/
     //testing if mines are actually there
 /*    int m = 0;
     for (int i = 0; i < grid.getGrid().length; i++) {
@@ -66,7 +67,7 @@ public class Minesweeper {
         }
       }
     }*/
-    grid.printGrid(0, 0, 0);
+    grid.printGrid(0, 0, 0, 0);
     System.out.println("There are " + amountMines + " mines.");
     
         //prompt for input
@@ -95,24 +96,49 @@ public class Minesweeper {
       if (choice == 1){
         /* clear method classname.clear */
         if (mineGrid[x][y]) {
-          grid.printGrid(x, y, 4);
+          grid.printGrid(x, y, 4, 0);
           System.out.println("OOPS! You tripped a mine. You lose.");
           System.exit(0);
         }
         else {
-          grid.printGrid(x, y, choice);
+          grid.printGrid(x, y, choice, aroundMines(x, y, mineGrid));
         }
       }
       if (choice == 2){
       /*flag classname.flag */
-        grid.printGrid(x, y, choice);
+        grid.printGrid(x, y, choice, 0);
       }
       if (choice == 3){
         //questionmark* classname.questionmark
-        grid.printGrid(x, y, choice);
+        grid.printGrid(x, y, choice, 0);
       }
+      System.out.println("CONGRATULATIONS! YOU WIN!");
     }
     
     ms.close();
   }
+      public static int aroundMines(int userR, int userC, boolean[][] mineGrid) {
+      int m = 0;
+      for (int i = 0; i < mineGrid.length; i++) {
+        for (int j = 0; j < mineGrid[0].length; j++) {
+          if (mineGrid[userR-1][userC+1])
+            m++;
+          if (mineGrid[userR][userC+1])
+            m++;
+          if (mineGrid[userR+1][userC+1])
+            m++;
+          if (mineGrid[userR-1][userC])
+            m++;
+          if (mineGrid[userR+1][userC])
+            m++;
+          if (mineGrid[userR-1][userC-1])
+            m++;
+          if (mineGrid[userR][userC-1])
+            m++;
+          if (mineGrid[userR+1][userC-1])
+            m++;
+        }
+      }
+      return m;
+    }
 }

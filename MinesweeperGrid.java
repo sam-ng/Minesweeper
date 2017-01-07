@@ -65,7 +65,7 @@ public class MinesweeperGrid {
     return grid;
   }
   
-  public void clearCheck(int i, int j){
+/*  public void clearCheck(int i, int j){
     MinesweeperBox box = new MinesweeperBox(false, false, false, false);
     if (grid[i][j] == 0){
       box.appearClear();
@@ -79,7 +79,7 @@ public class MinesweeperGrid {
       clearCheck(i, j+1);
       clearCheck(i+1, j+1);
     }
-  }
+  }*/
 
 /*  public String toString() {
     String stringGrid = "";
@@ -95,7 +95,7 @@ public class MinesweeperGrid {
     return stringGrid;
   }*/ //either one works
 
-  public void printGrid(int x, int y, int choice) {
+  public void printGrid(int x, int y, int choice, int m) {
     MinesweeperBox box = new MinesweeperBox(false, false, false, false);
     if (choice == 0) {
       for (int i = 0; i < grid.length; i++) {
@@ -109,7 +109,9 @@ public class MinesweeperGrid {
     if (choice == 1) {
       box.disappearQuestion();
       box.disappearFlag();
-      grid.clearCheck(x, y);
+//      grid.clearCheck(x, y);
+      if (m > 0)
+        grid[x][y] = "" + m;
       for (int i = 0; i < grid.length; i++) {
         for (int j = 0; j < grid[0].length; j++) {
           System.out.print(grid[i][j]);
