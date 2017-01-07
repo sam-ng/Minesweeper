@@ -67,17 +67,67 @@ public class MinesweeperGrid {
   
   public void clearCheck(int i, int j, int mineAround){
     MinesweeperBox box = new MinesweeperBox(false, false, false, false);
-    if (mineAround == 0){
+    if (mineAround == 0 && !grid[i][j].equals("" + box)){
       box.appearClear();
       grid[i][j] = "" + box;
-      clearCheck(i-1, j-1, mineAround);
-      clearCheck(i, j-1, mineAround);
-      clearCheck(i+1, j-1, mineAround);
-      clearCheck(i-1, j, mineAround);
-      clearCheck(i+1, j, mineAround);
-      clearCheck(i-1, j+1, mineAround);
-      clearCheck(i, j+1, mineAround);
-      clearCheck(i+1, j+1, mineAround);
+      if (i == 0 && j == 0) {
+        clearCheck(i, j+1, mineAround);
+        clearCheck(i+1, j,  mineAround);
+        clearCheck(i+1, j+1, mineAround);
+      }
+      if (i == row-1 && j == 0) {
+        clearCheck(i-1, j, mineAround);
+        clearCheck(i-1, j+1, mineAround);
+        clearCheck(i, j+1, mineAround);
+      }
+      if (i == 0 && j == col-1) {
+        clearCheck(i, j-1, mineAround);
+        clearCheck(i+1, j-1, mineAround);
+        clearCheck(i+1, j, mineAround);
+      }
+      if (i == row-1 && j == col-1) {
+        clearCheck(i-1, j-1, mineAround);
+        clearCheck(i-1, j, mineAround);
+        clearCheck(i, j-1, mineAround);
+      }
+      if (i > 0 && i < row-1 && j == 0) {
+        clearCheck(i-1, j, mineAround);
+        clearCheck(i-1, j+1, mineAround);
+        clearCheck(i, j+1, mineAround);
+        clearCheck(i+1, j, mineAround);
+        clearCheck(i+1, j+1, mineAround);
+      }
+      if (i == 0 && j > 0 && j < col-1) {
+        clearCheck(i, j-1, mineAround);
+        clearCheck(i, j+1, mineAround);
+        clearCheck(i+1, j-1, mineAround);
+        clearCheck(i+1, j, mineAround);
+        clearCheck(i+1, j+1, mineAround);
+      }
+      if (i > 0 && i < row-1 && j == col-1) {
+        clearCheck(i-1, j-1, mineAround);
+        clearCheck(i-1, j, mineAround);
+        clearCheck(i, j-1, mineAround);
+        clearCheck(i+1, j-1, mineAround);
+        clearCheck(i+1, j, mineAround);
+      }
+      if (i == row-1 && j > 0 && j < col-1) {
+        clearCheck(i-1, j-1, mineAround);
+        clearCheck(i-1, j, mineAround);
+        clearCheck(i-1, j+1, mineAround);
+        clearCheck(i, j-1, mineAround);
+        clearCheck(i, j+1, mineAround);
+      }
+      if (i > 0 && i < row-1 && j > 0 && j < col-1) {
+        clearCheck(i-1, j-1, mineAround);
+        clearCheck(i-1, j, mineAround);
+        clearCheck(i-1, j+1, mineAround);
+        clearCheck(i, j-1, mineAround);
+        clearCheck(i, j+1, mineAround);
+        clearCheck(i+1, j-1, mineAround);
+        clearCheck(i+1, j, mineAround);
+        clearCheck(i+1, j+1, mineAround);
+      }
     }
   }
 

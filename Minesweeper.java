@@ -102,6 +102,7 @@ public class Minesweeper {
         }
         else {
           grid.printGrid(x, y, choice, aroundMines(x, y, mineGrid));
+          cleared++;
         }
       }
       if (choice == 2){
@@ -112,9 +113,8 @@ public class Minesweeper {
         //questionmark* classname.questionmark
         grid.printGrid(x, y, choice, 0);
       }
-      System.out.println("CONGRATULATIONS! YOU WIN!");
     }
-    
+    System.out.println("CONGRATULATIONS! YOU WIN!");
     ms.close();
   }
   public static int aroundMines(int userR, int userC, boolean[][] mineGrid) {
@@ -129,7 +129,7 @@ public class Minesweeper {
           if (mineGrid[userR+1][userC+1])
             m++;
         }
-        if (userR == mineGrid.length && userC == 0) {
+        if (userR == mineGrid.length-1 && userC == 0) {
           if (mineGrid[userR-1][userC])
             m++;
           if (mineGrid[userR-1][userC+1])
@@ -137,7 +137,7 @@ public class Minesweeper {
           if (mineGrid[userR][userC+1])
             m++;
         }
-        if (userR == 0 && userC == mineGrid[0].length) {
+        if (userR == 0 && userC == mineGrid[0].length-1) {
           if (mineGrid[userR][userC-1])
             m++;
           if (mineGrid[userR+1][userC-1])
@@ -145,7 +145,7 @@ public class Minesweeper {
           if (mineGrid[userR+1][userC])
             m++;
         }
-        if (userR == mineGrid.length && userC == mineGrid[0].length) {
+        if (userR == mineGrid.length-1 && userC == mineGrid[0].length-1) {
           if (mineGrid[userR-1][userC-1])
             m++;
           if (mineGrid[userR][userC-1])
@@ -153,7 +153,7 @@ public class Minesweeper {
           if (mineGrid[userR-1][userC])
             m++;
         }
-        if (userR > 0 && userR < mineGrid.length && userC == 0) {
+        if (userR > 0 && userR < mineGrid.length-1 && userC == 0) {
           if (mineGrid[userR-1][userC])
             m++;
           if (mineGrid[userR-1][userC+1])
@@ -165,7 +165,7 @@ public class Minesweeper {
           if (mineGrid[userR-1][userC+1])
             m++;
         }
-        if (userR == 0 && userC > 0 && userC < mineGrid[0].length) {
+        if (userR == 0 && userC > 0 && userC < mineGrid[0].length-1) {
           if (mineGrid[userR][userC-1])
             m++;
           if (mineGrid[userR][userC+1])
@@ -177,7 +177,7 @@ public class Minesweeper {
           if (mineGrid[userR-1][userC+1])
             m++;
         }
-        if (userR > 0 && userR < mineGrid.length && userC == mineGrid[0].length) {
+        if (userR > 0 && userR < mineGrid.length-1 && userC == mineGrid[0].length-1) {
           if (mineGrid[userR-1][userC-1])
             m++;
           if (mineGrid[userR-1][userC])
@@ -189,7 +189,7 @@ public class Minesweeper {
           if (mineGrid[userR-1][userC])
             m++;
         }
-        if (userR == mineGrid.length && userC > 0 && userC < mineGrid[0].length) {
+        if (userR == mineGrid.length-1 && userC > 0 && userC < mineGrid[0].length-1) {
           if (mineGrid[userR-1][userC-1])
             m++;
           if (mineGrid[userR-1][userC])
