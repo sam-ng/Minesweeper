@@ -55,7 +55,7 @@ public class MinesweeperBox {
       return "[?]";
     }
     else if (clear) {
-      return ".";
+      return "[.]";
     }
     else {
       return "[ ]";

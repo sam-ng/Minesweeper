@@ -111,7 +111,11 @@ public class MinesweeperGrid {
       box.disappearFlag();
 //      grid.clearCheck(x, y);
       if (m > 0)
-        grid[x][y] = "" + m;
+        grid[x][y] = "[" + m + "]";
+      else {
+        box.appearClear();
+        grid[x][y] = "" + box;
+      }
       for (int i = 0; i < grid.length; i++) {
         for (int j = 0; j < grid[0].length; j++) {
           System.out.print(grid[i][j]);

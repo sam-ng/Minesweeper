@@ -101,7 +101,7 @@ public class Minesweeper {
           System.exit(0);
         }
         else {
-          grid.printGrid(x, y, choice, 0/*aroundMines(x, y, mineGrid)*/);
+          grid.printGrid(x, y, choice, aroundMines(x, y, mineGrid));
         }
       }
       if (choice == 2){
@@ -117,67 +117,110 @@ public class Minesweeper {
     
     ms.close();
   }
-/*      public static int aroundMines(int userR, int userC, boolean[][] mineGrid) {
-      int m = 0;
-      for (int i = 1; i < mineGrid.length; i++) {
-        for (int j = 1; j < mineGrid[0].length; j++) {
-          if (userR == 0 && userC == 0) {
-            if (mineGrid[userR+1][userC])
-              m++;
-            if (mineGrid[userR][userC+1])
-              m++;
-            if (mineGrid[userR+1][userC+1])
-              m++;
-          }
-          if (userR == 8 && userC == 0) {
-            if (mineGrid[userR-1][userC])
-              m++;
-            if (mineGrid[userR-1][userC+1])
-              m++;
-            if (mineGrid[userR][userC+1])
-              m++;
-          }
-          if (userR == 0 && userC == 8) {
-            if (mineGrid[userR][userC-1])
-              m++;
-            if (mineGrid[userR+1][userC-1])
-              m++;
-            if (mineGrid[userR+1][userC])
-              m++;
-          }
-          if (userR == 8 && userC == 8) {
-            if (mineGrid[userR-1][userC-1])
-              m++;
-            if (mineGrid[userR][userC-1])
-              m++;
-            if (mineGrid[userR-1][userC])
-              m++;
-          }
-          if (userR > 0 && userR < 8 && userC == 0) {
-            if (mineGrid[userR-1][userC])
-              m++;
-            if (mineGrid[userR-1][userC+1])
-              m++;
-            if (mineGrid[userR][userC+1])
-              m++;
-            if (mineGrid[userR-1][userC])
-              m++;
-            if (mineGrid[userR-1][userC+1])
-              m++;
-          }
-          if (userR = 0 && userC > 0 && userC < 0) {
-            if (mineGrid[userR][userC])
-              m++;
-            if (mineGrid[userR][userC])
-              m++;
-            if (mineGrid[userR][userC])
-              m++;
-            if (mineGrid[userR][userC])
-              m++;
-            if (mineGrid[userR][userC])
-              m++;
+  public static int aroundMines(int userR, int userC, boolean[][] mineGrid) {
+    int m = 0;
+//    for (int i = 1; i < mineGrid.length; i++) {
+//      for (int j = 1; j < mineGrid[0].length; j++) {
+        if (userR == 0 && userC == 0) {
+          if (mineGrid[userR+1][userC])
+            m++;
+          if (mineGrid[userR][userC+1])
+            m++;
+          if (mineGrid[userR+1][userC+1])
+            m++;
         }
-      }
-      return m;
-    }*/
+        if (userR == mineGrid.length && userC == 0) {
+          if (mineGrid[userR-1][userC])
+            m++;
+          if (mineGrid[userR-1][userC+1])
+            m++;
+          if (mineGrid[userR][userC+1])
+            m++;
+        }
+        if (userR == 0 && userC == mineGrid[0].length) {
+          if (mineGrid[userR][userC-1])
+            m++;
+          if (mineGrid[userR+1][userC-1])
+            m++;
+          if (mineGrid[userR+1][userC])
+            m++;
+        }
+        if (userR == mineGrid.length && userC == mineGrid[0].length) {
+          if (mineGrid[userR-1][userC-1])
+            m++;
+          if (mineGrid[userR][userC-1])
+            m++;
+          if (mineGrid[userR-1][userC])
+            m++;
+        }
+        if (userR > 0 && userR < mineGrid.length && userC == 0) {
+          if (mineGrid[userR-1][userC])
+            m++;
+          if (mineGrid[userR-1][userC+1])
+            m++;
+          if (mineGrid[userR][userC+1])
+            m++;
+          if (mineGrid[userR-1][userC])
+            m++;
+          if (mineGrid[userR-1][userC+1])
+            m++;
+        }
+        if (userR == 0 && userC > 0 && userC < mineGrid[0].length) {
+          if (mineGrid[userR][userC-1])
+            m++;
+          if (mineGrid[userR][userC+1])
+            m++;
+          if (mineGrid[userR-1][userC-1])
+            m++;
+          if (mineGrid[userR-1][userC])
+            m++;
+          if (mineGrid[userR-1][userC+1])
+            m++;
+        }
+        if (userR > 0 && userR < mineGrid.length && userC == mineGrid[0].length) {
+          if (mineGrid[userR-1][userC-1])
+            m++;
+          if (mineGrid[userR-1][userC])
+            m++;
+          if (mineGrid[userR][userC-1])
+            m++;
+          if (mineGrid[userR-1][userC-1])
+            m++;
+          if (mineGrid[userR-1][userC])
+            m++;
+        }
+        if (userR == mineGrid.length && userC > 0 && userC < mineGrid[0].length) {
+          if (mineGrid[userR-1][userC-1])
+            m++;
+          if (mineGrid[userR-1][userC])
+            m++;
+          if (mineGrid[userR-1][userC+1])
+            m++;
+          if (mineGrid[userR][userC-1])
+            m++;
+          if (mineGrid[userR][userC+1])
+            m++;
+        }
+        if (userR > 0 && userR < mineGrid.length-1 && userC > 0 && userC < mineGrid[0].length-1) {
+          if (mineGrid[userR-1][userC-1])
+            m++;
+          if (mineGrid[userR-1][userC])
+            m++;
+          if (mineGrid[userR-1][userC+1])
+            m++;
+          if (mineGrid[userR][userC-1])
+            m++;
+          if (mineGrid[userR][userC+1])
+            m++;
+          if (mineGrid[userR+1][userC-1])
+            m++;
+          if (mineGrid[userR+1][userC])
+            m++;
+          if (mineGrid[userR+1][userC+1])
+            m++;
+        }
+//      }
+//    }
+    return m;
+  }
 }
